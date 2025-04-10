@@ -1,0 +1,3 @@
+[submodule "frontend"]
+	path = FE
+	url = https://github.com/TadNT2003/lvtn-frontend.git
