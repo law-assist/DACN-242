@@ -4,3 +4,6 @@
 [submodule "backend"]
 	path = BE
 	url = https://github.com/TadNT2003/lvtn-backend.git
+[submodule "AI-linking-laws"]
+	path = AI_linking_laws
+	url = https://github.com/TadNT2003/lvtn-AI.git
