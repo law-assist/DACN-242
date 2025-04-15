@@ -1,0 +1,37 @@
+{
+	// Dev container name
+	"name": "DACN-242 frontend dev environment",
+	// Docker compose file for dev environment
+	"dockerComposeFile": "../../docker-compose.yml",
+	// Service run on dev container
+	"service": "frontend",
+	// Path of workspace folder inside container
+	"workspaceFolder": "/workspace/FE",
+	
+	// Use 'forwardPorts' to make a list of ports inside the container available locally
+	"forwardPorts": [3000],
+	// Prevent from accidentally shutting down both BE and FE container by closing one window
+	"shutdownAction": "none",
+
+	// Use 'postCreateCommand' to run commands after the container is created
+	"postCreateCommand": "npm install --legacy-peer-deps",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"burkeholland.simple-react-snippets",
+				"dsznajder.es7-react-js-snippets",
+				"EQuimper.react-native-react-redux",
+				"syler.sass-indented",
+				"eamodio.gitlens",
+				"ecmel.vscode-html-css",
+				"ms-vscode.vscode-typescript-next"
+			]
+		}
+	},
+
+	// Connect as root user inside dev container
+	"remoteUser": "root"
+}
