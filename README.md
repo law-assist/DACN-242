@@ -13,7 +13,7 @@ git checkout dev
 
 3. Choose "DACN-242 backend dev environment" option (You could choose frontend options first, the order is not important). Each option is a dev container for a submodule of the project
 
-  ![Backend_dev_con_option](/documentation/backend_dev_con_option)
+  ![Backend_dev_con_option](https://github.com/law-assist/DACN-242/wiki/image/choose-dev-container-option.png)
 
 4. Open a new VS Code window, repeat the same steps above and choose the other options in step 3
 5. Now, you can start developing normally like on your local machine for each submodule. Each dev container is able to communicate with each other, while has their dev environment seperate like an independent repo
