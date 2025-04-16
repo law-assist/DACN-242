@@ -1,9 +1,5 @@
 # DACN-242 Development guideline
 
-## Convention
-- `docker-compose.yml` file in `main` branch must be for deployment, while on `dev` branch is for dev container.
-- `Dockerfile` in `.devcontainer` folder is used only for buiding dev container. Other `Dockerfile` and `docker-compose.yml` in submodule folder are for their respective deployment and standalone dev container, not integrated as the whole project dev environment.
-
 ## Dev container
 Recommended using [Visual Studio Code](https://code.visualstudio.com/) for development in container. Check this [document](https://code.visualstudio.com/docs/devcontainers/containers) for setting up a dev container.
 
