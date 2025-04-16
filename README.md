@@ -10,7 +10,7 @@ This repository is a bundle of source code repositories required to run the Law-
 
     ‼️***For guideline on development, please check the documentation on ***`dev`*** branch***
   
-- feature branches: please go to the respective submodule repository to integrate new feature into it instead of add it directly to the parent repo
+- feature branches: please go to the respective submodule repository to integrate new feature into it instead of adding it directly to the parent repo
 
 ## Clone the repository
 ### Clone the parent repo
@@ -23,12 +23,17 @@ You can also clone the children repos independently. However, you have to recrea
 
 Check the development guideline on each submodule repo for more infomation.
 
-## Development guideline
+## Convention
+- `docker-compose.yml` file in `main` branch must be for deployment, while on `dev` branch is for dev container.
+- Submodules' branch on `main` must be their respective stable branch (i.e `main` or `master`). Therefore, don't commit any change in submodule folder directly to parent repo, including checkout to other branch.
+    * Don't change any thing in submodule directly from the parent repo. Instead, go to that submodule and commit change to its respective repo (follow its own development guideline)
+
+## Development
 Recommended using [Visual Studio Code](https://code.visualstudio.com/) for development in container. Check this [document](https://code.visualstudio.com/docs/devcontainers/containers) for setting up a dev container.
 
 ‼️***Please check the documentation on ***`dev`*** branch***
 
-## Deployment guideline
+## Deployment
 
 Move to branch `main`
 
