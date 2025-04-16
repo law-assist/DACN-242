@@ -1,4 +1,4 @@
-# Setup container environment for BE and FE
+# Setup container environment for FE
 FROM node:21-alpine
 
 # Install git and bash for rum cmd in actions
