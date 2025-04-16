@@ -1,70 +1,30 @@
-services:
-  mongo:
-    container_name: law-mongodb
-    image: mongo
-    restart: always
-    ports:
-      - 27018:27017
-    networks:
-      - law_network
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: 
-      MONGO_INITDB_ROOT_PASSWORD: 
-      MONGO_INITDB_DATABASE: law_linking
-    volumes:
-      - law_mongodata:/data/db
+version: "3.8"
 
-  # mongo-express:
-  #   container_name: law-mongo-express
-  #   image: mongo-express
-  #   restart: always
-  #   ports:
-  #     - 8081:8081
-  #   environment:
-  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
-  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
-  #     ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/law_linking
-  #     ME_CONFIG_BASICAUTH: false
-  frontend:
-    build:
-      context: ./FE
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - 3000:3000
-    networks:
-      - law_network
-    container_name: dacn242-frontend-app
-    image: dacn242-frontend-app:0.0
-    env_file:
-      - ./FE/.env
+services:
   backend:
-    build:
-      context: ./BE
-      dockerfile: Dockerfile
-    ports:
-      - 5000:5000
-    networks:
-      - law_network
-    container_name: dacn242-backend-app
-    image: dacn242-backend-app:0.0
+    image: kanghcmut/lvtn-backend-app:latest
+    restart: always
     env_file:
-      - ./BE/.env
-    volumes:
-      - law_backend_server:/app/src
-    environment:
-      - NODE_OPTIONS=--max-old-space-size=4096  # Increase the memory limit to 4GB
-    depends_on:
-      - mongo
+      - ./.env
+    ports:
+      - "29001:29001"
     deploy:
-      resources:
-        limits:
-          memory: 4g  # Limit the container to 4GB of memory
-volumes:
-  law_mongodata:
-    driver: local
-  law_backend_server:
-    driver: local
-networks:
-  law_network:
-    driver: bridge
+      update_config:
+        order: start-first
+    pull_policy: always
+
+  frontend:
+    image: kanghcmut/lvtn-frontend-app:latest
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "29000:29000"
+    env_file:
+      - ./.env
+    environment:
+      - NEXTAUTH_URL:https://pl.thuanle.me 
+      - NEXT_SERVER_API_HOST:https://api-pl.thuanle.me
+      - NEXT_PUBLIC_API_HOST:https://api-pl.thuanle.me
+      - API_HOST:https://api-pl.thuanle.me
+    pull_policy: always
