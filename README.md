@@ -9,7 +9,7 @@ git checkout dev
 ```
 2. From VS Code command command palette, type "Reopen" and choose "Dev Containers: Reopen in Containers" option
 
-  ![Dev Container option](/documentation/dev_container_option)
+  ![Dev Container option](https://github.com/law-assist/DACN-242/wiki/blob/master/image/reopen-in-container-option.png)
 
 3. Choose "DACN-242 backend dev environment" option (You could choose frontend options first, the order is not important). Each option is a dev container for a submodule of the project
 
