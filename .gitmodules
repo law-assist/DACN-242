@@ -6,4 +6,4 @@
 	url = https://github.com/law-assist/DACN-242-backend.git
 [submodule "AI-linking-laws"]
 	path = AI_linking_laws
-	url = https://github.com/TadNT2003/lvtn-AI.git
+	url = https://github.com/law-assist/datcuong-ai-law-linking.git
