@@ -1,6 +1,6 @@
 {
 	// Dev container name
-	"name": "DACN-242 frontend dev environment",
+	"name": "Law assist frontend dev environment",
 	// Docker compose file for dev environment
 	"dockerComposeFile": "../../docker-compose.yml",
 	// Service run on dev container
@@ -9,7 +9,7 @@
 	"workspaceFolder": "/workspace/FE",
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally
-	"forwardPorts": [3000],
+	"forwardPorts": [29002],
 	// Prevent from accidentally shutting down both BE and FE container by closing one window
 	"shutdownAction": "none",
 

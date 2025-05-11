@@ -5,33 +5,22 @@ services:
     volumes:
       - law-fulldev-database:/data/db
   frontend:
-    build:
-      context: ./.devcontainer/frontend-dev
-      dockerfile: Dockerfile
+    image: lawassist/frontend:dev-latest
     volumes:
       - .:/workspace:cached
       - frontend-dev-node-module:/workspace/FE/node_modules
     environment:
-      - NEXT_PUBLIC_API_HOST=http://localhost:5000
-      - REMOTE_PROTOCOL=https
-      - REMOTE_HOSTNAME=storage.googleapis.com 
-      - REMOTE_PHOTO_MOCK_DATA=picsum.photos
-      - NEXTAUTH_SECRET=123
-      - NEXTAUTH_URL=http://localhost:3000/
-      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - NEXT_PUBLIC_API_HOST=http://localhost:29003
+      - NEXTAUTH_URL=http://localhost:29002/
     command: sleep infinity
     network_mode: service:backend
   backend:
-    build:
-      context: ./.devcontainer/backend-dev
-      dockerfile: Dockerfile
+    image: lawassist/backend:dev-latest
     volumes:
       - .:/workspace:cached
       - backend-dev-node-module:/workspace/BE/node_modules
     environment:
       - MONGODB_URI=mongodb://localhost:27017/law_linking
-      - JWT_SECRET=123
-      - PORT=5000
     command: sleep infinity
     network_mode: service:database
 volumes:
