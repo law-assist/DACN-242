@@ -3,7 +3,7 @@ services:
     image: mongo
     restart: always
     volumes:
-      - law-fulldev-database:/data/db
+      - law-dev-database:/data/db
   frontend:
     image: lawassist/frontend:dev-latest
     volumes:
@@ -23,7 +23,22 @@ services:
       - MONGODB_URI=mongodb://localhost:27017/law_linking
     command: sleep infinity
     network_mode: service:database
+  ai-law-linking:
+    image: lawassist/ai-law-linking:dev-latest
+    volumes:
+      - .:/workspace:cached
+    environment:
+      - DATABASE_URI=mongodb://localhost:27017/law_linking
+    command: sleep infinity
+    network_mode: service:database
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all # alternatively, use `count: all` for all GPUs
+              capabilities: [gpu]
 volumes:
-  law-fulldev-database:
+  law-dev-database:
   frontend-dev-node-module:
   backend-dev-node-module:

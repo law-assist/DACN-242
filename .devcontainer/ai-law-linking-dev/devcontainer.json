@@ -1,0 +1,36 @@
+{
+    // Dev container name
+    "name": "AI law linking dev environment",
+    // Docker compose file for dev environment
+    "dockerComposeFile": "../../docker-compose.yml",
+    // Service run on dev container
+    "service": "ai-law-linking",
+    // Path of workspace folder inside container
+    "workspaceFolder": "/workspace/AI_linking_laws",
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [8000],
+    // Prevent from accidentally shutting down both BE and FE container by closing one window
+    "shutdownAction": "none",
+
+    // Use 'postCreateCommand' to run command after container created.
+    "postCreateCommand": [
+        "nvidia-smi"
+    ],
+    
+    // Configure tool-specific properties.
+    "customizations": {
+        "vscode": {
+        "extensions": [
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "donjayamanne.python-environment-manager",
+            "ms-python.debugpy",
+            "eamodio.gitlens",
+            "mongodb.mongodb-vscode"
+        ]
+        }
+    },
+
+    "remoteUser": "root"
+}
