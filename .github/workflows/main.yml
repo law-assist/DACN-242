@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Law assist production CD
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  compose-docker-and-deploy:
+    runs-on: [self-hosted, deployment]
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Copy Environment file to runner
+        run: cp /home/la-2025/publish/pl.thuanle.me/.env .env
+
+      - name: Check setup files
+        run: ls -a
+
+      - name: Docker Setup Compose
+        uses: docker/setup-compose-action@v1.2.0
+
+      - name: Deploy Compose stack
+        run: docker compose up -d
