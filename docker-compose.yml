@@ -3,6 +3,11 @@ services:
         image: mongo
         restart: always
         command: --port 37017
+        env_file:
+            - ./.env
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
         volumes:
           - law-assist-db:/data/db
         # ports:
@@ -41,6 +46,8 @@ services:
     ai-law-linking:
         image: lawassist/ai-law-linking:prod-latest
         restart: always
+        depends_on:
+            - backend
         env_file:
               - ./.env
         # ports:
